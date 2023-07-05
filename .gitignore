@@ -1,0 +1,10 @@
+PdfGenerator.Application/bin/*
+PdfGenerator.Core/bin/*
+PdfGenerator.Infrastructure/bin/*
+PdfGenerator.WebApi/bin/*
+PdfGenerator.Application/obj/*
+PdfGenerator.Core/obj/*
+PdfGenerator.Infrastructure/obj/*
+PdfGenerator.WebApi/obj/*
+.idea
+.DS_Store

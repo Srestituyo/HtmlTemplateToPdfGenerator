@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PdfGenerator.Application\PdfGenerator.Application.csproj" />
+      <ProjectReference Include="..\PdfGenerator.Infrastructure\PdfGenerator.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Images\" />
+    </ItemGroup>
+
+</Project>
