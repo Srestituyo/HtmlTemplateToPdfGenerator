@@ -18,14 +18,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+      <ProjectReference Include="..\PdfGenerator.Application\PdfGenerator.Application.csproj" />
+      <ProjectReference Include="..\PdfGenerator.Infrastructure\PdfGenerator.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PdfGenerator.Application\PdfGenerator.Application.csproj" />
-      <ProjectReference Include="..\PdfGenerator.Infrastructure\PdfGenerator.Infrastructure.csproj" />
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>
