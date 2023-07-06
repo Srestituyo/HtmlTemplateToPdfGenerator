@@ -6,6 +6,7 @@ using PdfGenerator.Application.Common.Helper;
 using PdfGenerator.Application.Common.Wrapper;
 using PdfGenerator.Core.Entities;
 using PdfGenerator.Infrastructure;
+using Serilog;
 
 namespace PdfGenerator.Application.Handlers;
 
@@ -33,7 +34,7 @@ public class AddHtmlTemplateHandler : IRequestHandler<AddHtmlTemplateCommand, Re
             {
                 Name = request.Name,
                 Content = request.Content,
-                AditionalContext = request.AdditionalContent
+                AdditionalContext = request.AdditionalContext
             }; 
 
             await _dataContext.HtmlTemplates.AddAsync(aNewHtmlTemplate, cancellationToken);
@@ -43,7 +44,7 @@ public class AddHtmlTemplateHandler : IRequestHandler<AddHtmlTemplateCommand, Re
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Log.Error(e.Message);
             throw;
         }
     }

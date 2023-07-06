@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PdfGenerator.Application.Commands;
 using PdfGenerator.Application.Common.Wrapper;
 using PdfGenerator.Infrastructure;
+using Serilog;
 
 namespace PdfGenerator.Application.Handlers;
 
@@ -33,7 +34,7 @@ public class RemoveHtmlTemplateByIdHandler : IRequestHandler<RemoveHtmlTemplateB
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Log.Error(e.Message);
             throw;
         }
     }

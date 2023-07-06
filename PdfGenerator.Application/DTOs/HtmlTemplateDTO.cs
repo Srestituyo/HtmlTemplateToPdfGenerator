@@ -12,7 +12,7 @@ public class HtmlTemplateDTO  : IMapFrom<HtmlTemplate>
 
     public string Content { get; set; }
 
-    public string AdditionalContent { get; set; }
+    public string AdditionalContext { get; set; }
     
     public void Mapping(Profile profile)
     {

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PdfGenerator.Application.Commands;
 using PdfGenerator.Application.Common.Wrapper;
 using PdfGenerator.Infrastructure;
+using Serilog;
 
 namespace PdfGenerator.Application.Handlers;
 
@@ -29,7 +30,7 @@ public class UpdateHtmlTemplateHandler : IRequestHandler<UpdateHtmlTemplateComma
 
             aHtmlTemplate.Name = request.HtmlTemplate.Name;
             aHtmlTemplate.Content = request.HtmlTemplate.Content;
-            aHtmlTemplate.AditionalContext = request.HtmlTemplate.AdditionalContent;
+            aHtmlTemplate.AdditionalContext = request.HtmlTemplate.AdditionalContext;
             aHtmlTemplate.LastUpdatedDate = DateTime.Now;
 
             _dataContext.HtmlTemplates.Update(aHtmlTemplate);
@@ -38,7 +39,7 @@ public class UpdateHtmlTemplateHandler : IRequestHandler<UpdateHtmlTemplateComma
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Log.Error(e.Message);
             throw;
         }
     }

@@ -7,6 +7,7 @@ using PdfGenerator.Application.DTOs;
 using PdfGenerator.Application.Queries;
 using PdfGenerator.Application.ViewModels;
 using PdfGenerator.Infrastructure;
+using Serilog;
 
 namespace PdfGenerator.Application.Handlers;
 
@@ -34,7 +35,7 @@ public class GetAllHtmlTemplateHandler : IRequestHandler<GetAllHtmlTemplateQuery
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Log.Error(e.Message);
             throw;
         }
     }
