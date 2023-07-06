@@ -1,10 +1,13 @@
 PdfGenerator.Application/bin/*
 PdfGenerator.Core/bin/*
+PdfGenerator.Test/bin/*
 PdfGenerator.Infrastructure/bin/*
 PdfGenerator.WebApi/bin/*
 PdfGenerator.Application/obj/*
 PdfGenerator.Core/obj/*
 PdfGenerator.Infrastructure/obj/*
 PdfGenerator.WebApi/obj/*
+PdfGenerator.Test/obj/*
 .idea
 .DS_Store
+PdfGenerator.sln.DotSettings.user

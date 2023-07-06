@@ -136,11 +136,8 @@ public class TemplateController : ApiControllerBase
     [HttpPut("{id:guid}")]
     public async Task<ActionResult> UpdateTemplate([FromRoute] Guid id, [FromBody] HtmlTemplateModel theHtmlTemplate)
     {
-        var aResponse = await Mediator.Send(new UpdateHtmlTemplateCommand()
-        {
-            Id = id, HtmlTemplate = theHtmlTemplate
-        });
-        
+        var aResponse = await Mediator.Send(new UpdateHtmlTemplateCommand(id,theHtmlTemplate));
+
         if (!aResponse.Succeeded)
             Log.Error(aResponse.Message);
         else

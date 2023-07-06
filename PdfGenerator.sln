@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfGenerator.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfGenerator.Application", "PdfGenerator.Application\PdfGenerator.Application.csproj", "{1D9F1EBB-D08F-48A3-B773-F39F261C41E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfGenerator.Test", "PdfGenerator.Test\PdfGenerator.Test.csproj", "{58624081-3C41-4E32-97EF-2F19B999E8DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{1D9F1EBB-D08F-48A3-B773-F39F261C41E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D9F1EBB-D08F-48A3-B773-F39F261C41E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D9F1EBB-D08F-48A3-B773-F39F261C41E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58624081-3C41-4E32-97EF-2F19B999E8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58624081-3C41-4E32-97EF-2F19B999E8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58624081-3C41-4E32-97EF-2F19B999E8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58624081-3C41-4E32-97EF-2F19B999E8DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

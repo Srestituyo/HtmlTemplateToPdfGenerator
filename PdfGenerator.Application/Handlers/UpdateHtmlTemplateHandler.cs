@@ -20,12 +20,22 @@ public class UpdateHtmlTemplateHandler : IRequestHandler<UpdateHtmlTemplateComma
     {
         try
         {
-            var aHtmlTemplate = await _dataContext.HtmlTemplates.Where(x => x.Id == request.Id)
+            var aHtmlTemplate = await _dataContext.HtmlTemplates
+                .Where(x => x.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (aHtmlTemplate == null)
             {
                 throw new KeyNotFoundException($"The given HTML template Id {request.Id} was not found.");
+            }
+            
+            var aExistingNameTemplate = await _dataContext.HtmlTemplates
+                .Where(x => x.Name == request.HtmlTemplate.Name)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (aExistingNameTemplate != null)
+            {
+                throw new InvalidOperationException("An HTML template with the given name already exists.");
             }
 
             aHtmlTemplate.Name = request.HtmlTemplate.Name;
