@@ -1,4 +1,4 @@
-name: Deploy to Azure Container Registry
+name: Deploy to Docker Hub
 
 on:
   pull_request:
@@ -17,6 +17,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.REGISTRY }}/htmltemplatetopdf:${{ github.sha }} .
-          docker login ${{ secrets.REGISTRY }} -u ${{ secrets.USER }} -p ${{ secrets.PASSWORD }}
-          docker push ${{ secrets.REGISTRY }}/htmltemplatetopdf:${{ github.sha }}
+          docker build -t srestituyo/html-template-pdf-generator:${{ github.sha }} .
+          docker login -u srestituyo -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker push srestituyo/html-template-pdf-generator:${{ github.sha }}
+
