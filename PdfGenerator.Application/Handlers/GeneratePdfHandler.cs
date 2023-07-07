@@ -4,6 +4,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using PdfGenerator.Application.Common.Wrapper;
 using PdfGenerator.Application.DTOs;
 using PdfGenerator.Application.Queries;
@@ -16,11 +17,16 @@ namespace PdfGenerator.Application.Handlers;
 public class GeneratePdfHandler : IRequestHandler<GeneratePdfQuery, Response<string>>
 {
     private readonly DataContext _dataContext;
+    private readonly IConfiguration _configuration;
+    private string pupperEnvPath;
 
-    public GeneratePdfHandler(DataContext theContext)
+    public GeneratePdfHandler(DataContext theContext, IConfiguration configuration)
     {
         _dataContext = theContext;
-     }
+        _configuration = configuration;
+        this.pupperEnvPath = _configuration[$"PUPPETEER_EXECUTABLE_PATH:PATH"];
+
+    }
 
     public async Task<Response<string>> Handle(GeneratePdfQuery request, CancellationToken cancellationToken)
     {
@@ -55,7 +61,7 @@ public class GeneratePdfHandler : IRequestHandler<GeneratePdfQuery, Response<str
             var browserFetcher = new BrowserFetcher();
             await browserFetcher.DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
 
-            using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true,     ExecutablePath = Environment.GetEnvironmentVariable("PUPPETEER_EXECUTABLE_PATH") }))
+            using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true,     ExecutablePath = this.pupperEnvPath }))
             using (var page = await browser.NewPageAsync())
             {
                 await page.SetContentAsync(aHtmlTemplate.Content);
