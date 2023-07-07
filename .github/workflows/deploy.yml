@@ -17,7 +17,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t srestituyo/html-template-pdf-generator:latest .
+          docker build -t srestituyo/html-template-pdf-generator:${{ github.sha }} .
+          docker tag srestituyo/html-template-pdf-generator:${{ github.sha }} srestituyo/html-template-pdf-generator:latest
           docker login -u srestituyo -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push srestituyo/html-template-pdf-generator:latest
 
