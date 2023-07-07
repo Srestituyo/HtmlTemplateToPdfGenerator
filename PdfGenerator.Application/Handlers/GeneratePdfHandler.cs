@@ -55,7 +55,7 @@ public class GeneratePdfHandler : IRequestHandler<GeneratePdfQuery, Response<str
             var browserFetcher = new BrowserFetcher();
             await browserFetcher.DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
 
-            using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true }))
+            using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true,     ExecutablePath = Environment.GetEnvironmentVariable("PUPPETEER_EXECUTABLE_PATH") }))
             using (var page = await browser.NewPageAsync())
             {
                 await page.SetContentAsync(aHtmlTemplate.Content);
