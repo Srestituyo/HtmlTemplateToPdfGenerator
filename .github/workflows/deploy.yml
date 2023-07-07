@@ -23,5 +23,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.REGISTRY }}/my-image:${{ github.sha }} .
-          docker push ${{ secrets.REGISTRY }}/my-image:${{ github.sha }}
+          docker build -t ${{ secrets.REGISTRY }}/htmltemplatetopdf:${{ github.sha }} .
+          docker push ${{ secrets.REGISTRY }}/htmltemplatetopdf:${{ github.sha }}
