@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using PdfGenerator.Application.Models;
 using PdfGenerator.Application.Queries;
 
@@ -21,8 +22,8 @@ public class GeneratePdfQueryHandler
         
         var aQuery = new GeneratePdfQuery(){GeneratePdfModel = generatePdfModel};
         var dataContextMock = await DatabaseContext.GetDatabaseContext();
-
-        var handler = new GeneratePdfHandler(dataContextMock);
+        var configuration = new Mock<IConfiguration>();
+        var handler = new GeneratePdfHandler(dataContextMock, configuration.Object);
         
         // Act and Assert
         Assert.ThrowsAsync<KeyNotFoundException>(async () =>
@@ -47,8 +48,9 @@ public class GeneratePdfQueryHandler
         
         var aQuery = new GeneratePdfQuery(){GeneratePdfModel = generatePdfModel};
         var dataContextMock = await DatabaseContext.GetDatabaseContext();
+        var configuration = new Mock<IConfiguration>();
 
-        var handler = new GeneratePdfHandler(dataContextMock);
+        var handler = new GeneratePdfHandler(dataContextMock, configuration.Object);
         
         // Act
         var result = await handler.Handle(aQuery, CancellationToken.None);
