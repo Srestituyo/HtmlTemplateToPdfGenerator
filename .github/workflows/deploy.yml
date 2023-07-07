@@ -19,5 +19,5 @@ jobs:
         run: |
           docker build -t srestituyo/html-template-pdf-generator:${{ github.sha }} .
           docker login -u srestituyo -p ${{ secrets.DOCKERHUB_TOKEN }}
-          docker push srestituyo/html-template-pdf-generator:${{ github.sha }}
+          docker push srestituyo/html-template-pdf-generator:latest
 
