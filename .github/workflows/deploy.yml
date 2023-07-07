@@ -13,15 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          repository: srestituyo/HtmlTemplateToPdfGenerator
-
-      - name: Setup Docker
-        uses: docker/setup-docker@v1
-
-      - name: Login to Docker registry
-        run: docker login ${{ secrets.REGISTRY }} -u ${{ secrets.USER }} -p ${{ secrets.PASSWORD }}
+          repository: your-username/HtmlTemplateToPdfGenerator
 
       - name: Build and push Docker image
         run: |
           docker build -t ${{ secrets.REGISTRY }}/htmltemplatetopdf:${{ github.sha }} .
+          docker login ${{ secrets.REGISTRY }} -u ${{ secrets.USER }} -p ${{ secrets.PASSWORD }}
           docker push ${{ secrets.REGISTRY }}/htmltemplatetopdf:${{ github.sha }}
