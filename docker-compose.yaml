@@ -1,0 +1,9 @@
+version: "1.0"
+
+services:
+  webapi:
+    image: srestituyo/html-template-pdf-generator
+    ports: 
+      - 5002:80 
+    env_file:
+      - "pdf-generator.env"
